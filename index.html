@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>App Order Cá Nhân</title>
+</head>
+<body>
+
+<h2>🧾 App Order Cá Nhân</h2>
+
+<p>Khăn (50.000đ):
+<input type="number" id="item1" value="0" min="0"></p>
+
+<p>Xe  (120.000đ):
+<input type="number" id="item2" value="0" min="0"></p>
+
+<p>AirPort pickcup (250.000đ):
+<input type="number" id="item3" value="0" min="0"></p>
+
+<button onclick="order()">📦 Đặt hàng</button>
+<button onclick="sendWhatsApp()">📤 Gửi WhatsApp</button>
+
+<h3 id="total"></h3>
+
+<script>
+function order() {
+    let total =
+        item1.value * 50000 +
+        item2.value * 120000 +
+        item3.value * 250000;
+
+    document.getElementById("total").innerText =
+        "Tổng tiền: " + total + " VNĐ";
+}
+
+function sendWhatsApp() {
+    let phone = "84333243243”;
+
+    let message =
+`🧾 ĐƠN HÀNG
+Món 1: ${item1.value}
+Món 2: ${item2.value}
+Món 3: ${item3.value}
+
+Tổng tiền:
+${item1.value * 50000 +
+item2.value * 120000 +
+item3.value * 250000} VNĐ`;
+
+    let url =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(url);
+}
+</script>
+
+</body>
+</html>
